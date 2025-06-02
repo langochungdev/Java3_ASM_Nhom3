@@ -1,13 +1,13 @@
 package DAO;
-import Entity.News;
-import Utils.Jdbc;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import Entity.News;
+import Utils.Jdbc;
 
 public class NewsDAOImpl implements DAOchung<News, String> {
-
     @Override
     public List<News> findAll() {
         List<News> list = new ArrayList<>();
@@ -75,8 +75,6 @@ public class NewsDAOImpl implements DAOchung<News, String> {
         Jdbc.execUpdate(sql, id);
     }
 
-    // Các phương thức mở rộng
-
     public List<News> findByCategory(String categoryId) {
         List<News> list = new ArrayList<>();
         if (categoryId == null) return list;
@@ -119,16 +117,16 @@ public class NewsDAOImpl implements DAOchung<News, String> {
     }
 
     private News map(ResultSet rs) throws SQLException {
-        News news = new News();
-        news.setId(rs.getString("Id"));
-        news.setTitle(rs.getString("Title"));
-        news.setContent(rs.getString("Content"));
-        news.setImage(rs.getString("Image"));
-        news.setPostedDate(rs.getDate("PostedDate"));
-        news.setAuthor(rs.getString("Author"));
-        news.setViewCount(rs.getInt("ViewCount"));
-        news.setCategoryId(rs.getString("CategoryId"));
-        news.setHome(rs.getBoolean("Home"));
-        return news;
+        return new News(
+                rs.getString("Id"),
+                rs.getString("Title"),
+                rs.getString("Content"),
+                rs.getString("Image"),
+                rs.getDate("PostedDate"),
+                rs.getString("Author"),
+                rs.getInt("ViewCount"),
+                rs.getString("CategoryId"),
+                rs.getBoolean("Home")
+        );
     }
 }
