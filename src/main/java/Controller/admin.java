@@ -1,6 +1,10 @@
 package Controller;
 import java.io.IOException;
-
+import java.util.List;
+import DAO.NewsDAOImpl;
+import DAO.NewsletterDAOImpl;
+import Entity.News;
+import Entity.Newsletter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/admin")
 public class admin extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         String page = request.getParameter("page");
@@ -25,9 +30,14 @@ public class admin extends HttpServlet {
             	includePage = "/views/admin/nguoidung.jsp";
                 break; 
             case "newsletter":
-            	includePage = "/views/admin/newsletter.jsp";
-                break; 
+                includePage = "/views/admin/newsletter.jsp";
+                List<Newsletter> newsletterList = new NewsletterDAOImpl().findAll();
+                request.setAttribute("newsletterList", newsletterList);
+                break;
+
             default:
+            	List<News> newsList = new NewsDAOImpl().findHomeNews();
+                request.setAttribute("newsList", newsList);
                 includePage = "/views/main/trangchu.jsp";
                 break;
         }
