@@ -34,6 +34,7 @@ public class main extends HttpServlet {
             case "vanhoa":
                 includePage = "/views/main/vanhoa.jsp";
                 break;
+//hung
             case "tinchitiet":
                 String id = request.getParameter("id");
                 if (id != null) {
@@ -41,26 +42,18 @@ public class main extends HttpServlet {
                     request.setAttribute("news", news);
 
                     if (news != null) {
-                        // Lưu ID tin đã xem vào session
                         HttpSession session = request.getSession();
                         List<String> viewedIds = (List<String>) session.getAttribute("viewedNewsIds");
 
                         if (viewedIds == null) {
                             viewedIds = new ArrayList<>();
                         }
-
-                        // Tránh trùng lặp ID
                         viewedIds.remove(id);
-                        viewedIds.add(0, id); // Đưa lên đầu
-
-                        // Giới hạn 5 tin
+                        viewedIds.add(0, id); 
                         if (viewedIds.size() > 5) {
                             viewedIds = viewedIds.subList(0, 5);
                         }
-
                         session.setAttribute("viewedNewsIds", viewedIds);
-
-                        // Tìm tin liên quan
                         if (news.getCategoryId() != null) {
                             List<News> relatedNews = ((NewsDAOImpl) newsDAO).findByCategory(news.getCategoryId());
                             request.setAttribute("relatedNews", relatedNews);
@@ -98,10 +91,11 @@ public class main extends HttpServlet {
         request.setAttribute("includePage", includePage);
         request.getRequestDispatcher("/views/main.jsp").forward(request, response);
     }
-
+//hung end
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//hung 
         String email = request.getParameter("newsletter");
         if (email != null && !email.trim().isEmpty()) {
             NewsletterDAOImpl dao = new NewsletterDAOImpl();
@@ -116,7 +110,8 @@ public class main extends HttpServlet {
         } else {
             request.setAttribute("message", "Vui lòng nhập email hợp lệ!");
         }
-
+ 
         doGet(request, response);
+//hung end
     }
 }
