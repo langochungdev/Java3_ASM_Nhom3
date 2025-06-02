@@ -29,12 +29,12 @@ public class admin extends HttpServlet {
             case "nguoidung":
             	includePage = "/views/admin/nguoidung.jsp";
                 break; 
+//hung
             case "newsletter":
                 includePage = "/views/admin/newsletter.jsp";
                 List<Newsletter> newsletterList = new NewsletterDAOImpl().findAll();
                 request.setAttribute("newsletterList", newsletterList);
                 break;
-
             default:
             	List<News> newsList = new NewsDAOImpl().findHomeNews();
                 request.setAttribute("newsList", newsList);
