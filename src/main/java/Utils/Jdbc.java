@@ -63,8 +63,9 @@ public class Jdbc {
 	public static Object value(String sql, Object... args) {
 		ResultSet rs = execQuery(sql, args);
 		try {
-			if (rs.next()) {
-				return rs.getObject(0);
+                        if (rs.next()) {
+                                // get first column value from current row
+                                return rs.getObject(1);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
