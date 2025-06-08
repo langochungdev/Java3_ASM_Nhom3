@@ -59,15 +59,16 @@ public class Jdbc {
                        throw new RuntimeException(e);
                }
        }
-
-       public static Object value(String sql, Object... args) {
-               try (ResultSet rs = execQuery(sql, args)) {
-                       if (rs.next()) {
-                               return rs.getObject(0);
-                       }
-               } catch (Exception e) {
-                       throw new RuntimeException(e);
-               }
-               return null;
-       }
+  
+	public static Object value(String sql, Object... args) {
+		ResultSet rs = execQuery(sql, args);
+		try {
+                        if (rs.next()) {
+                                return rs.getObject(1);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return null;
+	}
 }
