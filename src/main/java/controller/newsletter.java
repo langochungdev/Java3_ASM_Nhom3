@@ -1,8 +1,8 @@
-package Controller;
+package controller;
 
 import java.io.IOException;
-import DAO.NewsletterDAOImpl;
-import Entity.Newsletter;
+import dao.NewsletterDAOImpl;
+import entity.Newsletter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

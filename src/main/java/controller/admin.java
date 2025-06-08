@@ -1,10 +1,10 @@
-package Controller;
+package controller;
 import java.io.IOException;
 import java.util.List;
-import DAO.NewsDAOImpl;
-import DAO.NewsletterDAOImpl;
-import Entity.News;
-import Entity.Newsletter;
+import dao.NewsDAOImpl;
+import dao.NewsletterDAOImpl;
+import entity.News;
+import entity.Newsletter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

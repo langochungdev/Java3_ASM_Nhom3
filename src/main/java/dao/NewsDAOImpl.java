@@ -1,11 +1,11 @@
-package DAO;
+package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import Entity.News;
-import Utils.Jdbc;
+import entity.News;
+import utils.Jdbc;
 
 public class NewsDAOImpl implements DAOchung<News, String> {
     @Override

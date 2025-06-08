@@ -1,7 +1,7 @@
-package DAO;
+package dao;
 
-import Entity.Newsletter;
-import Utils.Jdbc;
+import entity.Newsletter;
+import utils.Jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
