@@ -25,14 +25,12 @@ public class NewsletterDAOImpl implements DAOchung<Newsletter, String> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return list;
     }
 
     @Override
     public Newsletter findById(String email) {
         String sql = "SELECT * FROM newsletters WHERE email = ?";
-
         try (ResultSet rs = Jdbc.execQuery(sql, email)) {
             if (rs.next()) {
                 return new Newsletter(
@@ -43,7 +41,6 @@ public class NewsletterDAOImpl implements DAOchung<Newsletter, String> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
