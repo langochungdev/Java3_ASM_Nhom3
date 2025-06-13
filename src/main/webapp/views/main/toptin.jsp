@@ -31,7 +31,7 @@
                         </c:otherwise>
                     </c:choose>
                 </p>
-                <p class="text-muted small mb-0">${item.postedDate} / ${item.author}</p>
+                <p class="text-muted small mb-0">${item.postedDate} / ${item.author}- 👁 ${item.viewCount} lượt xem</p>
             </div>
         </a>
     </c:forEach>

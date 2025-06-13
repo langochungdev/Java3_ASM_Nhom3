@@ -133,16 +133,18 @@ public class NewsDAOImpl implements DAOchung<News, String> {
  // 5 bản tin được xem nhiều nhất
     public List<News> findTopViewed(int limit) {
         List<News> list = new ArrayList<>();
-        String sql = "SELECT TOP " + limit + " * FROM NEWS ORDER BY ViewCount DESC";
-        try (ResultSet rs = Jdbc.execQuery(sql)) {
+        String sql = "SELECT TOP (?) * FROM NEWS ORDER BY ViewCount DESC";
+
+        try (ResultSet rs = Jdbc.execQuery(sql, limit)) {
             while (rs.next()) {
                 list.add(map(rs));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
     }
+
 
     // 5 bản tin mới nhất
     public List<News> findLatest(int limit) {
