@@ -16,9 +16,6 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/main")
 public class main extends HttpServlet {
-    private DAOchung newsDAO = new NewsDAOImpl();
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String page = request.getParameter("page");
@@ -38,7 +35,7 @@ public class main extends HttpServlet {
             case "tinchitiet":
                 String id = request.getParameter("id");
                 if (id != null) {
-                    News news = ((NewsDAOImpl) newsDAO).findById(id);
+                    News news = new NewsDAOImpl().findById(id);
                     request.setAttribute("news", news);
 
                     if (news != null) {
@@ -55,7 +52,7 @@ public class main extends HttpServlet {
                         }
                         session.setAttribute("viewedNewsIds", viewedIds);
                         if (news.getCategoryId() != null) {
-                            List<News> relatedNews = ((NewsDAOImpl) newsDAO).findByCategory(news.getCategoryId());
+                            List<News> relatedNews = new NewsDAOImpl().findByCategory(news.getCategoryId());
                             request.setAttribute("relatedNews", relatedNews);
                         }
                     }
@@ -70,7 +67,7 @@ public class main extends HttpServlet {
 
                 if (viewedIds != null) {
                     for (String vid : viewedIds) {
-                        News n = ((NewsDAOImpl) newsDAO).findById(vid);
+                        News n = new NewsDAOImpl().findById(vid);
                         if (n != null) {
                             viewedNews.add(n);
                         }
@@ -82,7 +79,7 @@ public class main extends HttpServlet {
                 break;
 
             default:
-                List<News> list = ((NewsDAOImpl) newsDAO).findHomeNews();
+                List<News> list = new NewsDAOImpl().findHomeNews();
                 request.setAttribute("newsList", list);
                 includePage = "/views/main/trangchu.jsp";
                 break;
@@ -92,7 +89,6 @@ public class main extends HttpServlet {
         request.getRequestDispatcher("/views/main.jsp").forward(request, response);
     }
 //hung end
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //hung 
