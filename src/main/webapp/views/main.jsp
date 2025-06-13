@@ -27,8 +27,17 @@
 						<li class="nav-item"><a class="nav-link" href="main?page=thethao">Thể thao</a></li>
 					</ul>
 					<div class="ms-auto">
-						<a href="login" class="btn btn-outline-light">Đăng nhập</a>
+    					<c:choose>
+        					<c:when test="${not empty sessionScope.currentUser}">
+            						<span class="me-2 text-white">${sessionScope.currentUser.fullname}</span>
+            						<a href="logout" class="btn btn-outline-light">Đăng xuất</a>
+        					</c:when>
+        			<c:otherwise>
+            						<a href="login" class="btn btn-outline-light">Đăng nhập</a>
+        			</c:otherwise>
+    					</c:choose>
 					</div>
+					
 				</div>
 			</div>
 		</nav>
@@ -42,13 +51,10 @@
 
 			<aside class="col-lg-4">
 				<div class="list-group mb-3">
-					<a href="main?page=tinchitiet&id=1"
-						class="list-group-item list-group-item-warning">5 bản tin được xem nhiều</a>
-					<a href="main?page=tinchitiet&id=2"
-						class="list-group-item list-group-item-warning">5 bản tin được xem nhiều</a>
-					<a href="main?page=recent"
-						class="list-group-item list-group-item-info fw-bold">5 tin bạn đã xem</a>
-				</div>
+        			<a href="main?page=toptin" class="list-group-item list-group-item-warning">🔥 5 tin được xem nhiều</a>
+        			<a href="main?page=tinmoinhat" class="list-group-item list-group-item-success">🆕 5 tin mới nhất</a>
+        			<a href="main?page=recent" class="list-group-item list-group-item-info">👁 5 tin đã xem</a>
+    			</div>
 
 				<form action="main" method="post" class="input-group">
 					<input type="email" name="newsletter"

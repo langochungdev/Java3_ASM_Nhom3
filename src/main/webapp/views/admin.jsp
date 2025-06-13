@@ -21,15 +21,24 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav mx-auto">
-						<li class="nav-item"><a class="nav-link" href="admin?page=main">Trang chủ</a></li>
-						<li class="nav-item"><a class="nav-link" href="admin?page=tintuc">Tin tức</a></li>
-						<li class="nav-item"><a class="nav-link" href="admin?page=loaitin">Loại tin</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin?page=main">Trang chủ</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin?page=tintuc">Tin tức</a></li>
+							<li class="nav-item"><a class="nav-link" href="admin?page=loaitin">Loại tin</a></li>
+
+					<!-- Chỉ hiển thị nếu là admin -->
+						<c:if test="${sessionScope.currentUser.role}">
 						<li class="nav-item"><a class="nav-link" href="admin?page=nguoidung">Người dùng</a></li>
 						<li class="nav-item"><a class="nav-link" href="admin?page=newsletter">Newsletter</a></li>
+						</c:if>
 					</ul>
+
 					<div class="ms-auto">
-						<a href="logout" class="btn btn-outline-light">Đăng xuất</a>
+    					<c:if test="${not empty sessionScope.currentUser}">
+        					<span class="me-2 text-white">${sessionScope.currentUser.fullname}</span>
+        					<a href="logout" class="btn btn-outline-light">Đăng xuất</a>
+    					</c:if>
 					</div>
+					
 				</div>
 			</div>
 		</nav>

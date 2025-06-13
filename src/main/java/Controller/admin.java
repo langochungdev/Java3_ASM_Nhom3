@@ -5,6 +5,7 @@ import DAO.NewsDAOImpl;
 import DAO.NewsletterDAOImpl;
 import Entity.News;
 import Entity.Newsletter;
+import Entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,14 @@ public class admin extends HttpServlet {
             throws ServletException, IOException {
         String page = request.getParameter("page");
         String includePage;
-        
+     // Kiểm tra phân quyền trong Controller
+        User user = (User) request.getSession().getAttribute("currentUser");
+        if (user != null && !user.isRole()) { // nếu là phóng viên
+            if ("nguoidung".equals(page) || "newsletter".equals(page)) {
+                response.sendError(HttpServletResponse.SC_FORBIDDEN, "Bạn không có quyền truy cập trang này!");
+                return;
+            }
+        }
         switch (page != null ? page : "") {
             case "tintuc":
                 includePage = "/views/admin/tintuc.jsp";
