@@ -1,5 +1,7 @@
 package DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -160,7 +162,44 @@ public class NewsDAOImpl implements DAOchung<News, String> {
         return list;
     }
     
-    
-    
+    public List<News> findByCategory(String categoryId, String excludeId) {
+        List<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM NEWS WHERE CategoryId = ? AND Id <> ?";
+        try (Connection conn = Jdbc.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, categoryId);
+            ps.setString(2, excludeId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                News n = new News(
+                    rs.getString("Id"),
+                    rs.getString("Title"),
+                    rs.getString("Content"),
+                    rs.getString("Image"),
+                    rs.getDate("PostedDate"),
+                    rs.getString("Author"),
+                    rs.getInt("ViewCount"),
+                    rs.getString("CategoryId"),
+                    rs.getBoolean("Home")
+                );
+                list.add(n);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public void increaseViewCount(String id) {
+        String sql = "UPDATE NEWS SET ViewCount = ISNULL(ViewCount, 0) + 1 WHERE Id = ?";
+        try (Connection conn = Jdbc.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     
 }

@@ -9,7 +9,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/loaitin")
-public class CategoryServlet extends HttpServlet {
+public class CategorySL extends HttpServlet {
     private final CategoryDAO dao = new CategoryDAO();
 
     @Override
@@ -42,6 +42,8 @@ public class CategoryServlet extends HttpServlet {
             case "delete":
                 if (dao.findById(id) == null) {
                     error = "Không tìm thấy loại tin để xóa!";
+                } else if (dao.hasNews(id)) {
+                    error = "Không thể xóa vì đã có tin thuộc loại tin này!";
                 } else {
                     dao.deleteById(id);
                 }

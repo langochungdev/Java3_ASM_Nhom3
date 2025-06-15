@@ -53,4 +53,20 @@ public class CategoryDAO implements DAOchung<Category, String> {
         String sql = "DELETE FROM CATEGORIES WHERE Id = ?";
         Jdbc.execUpdate(sql, id);
     }
+    
+    public boolean hasNews(String categoryId) {
+        String sql = "SELECT COUNT(*) FROM NEWS WHERE CategoryId = ?";
+        try (Connection conn = Jdbc.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

@@ -43,7 +43,7 @@
             <ul class="list-unstyled">
                 <c:forEach var="item" items="${relatedNews}">
                     <li class="mb-2">
-                        <a href="main?page=tinchitiet&id=${item.id}" class="text-decoration-none">
+                        <a href="admin?page=tinchitiet&id=${item.id}" class="text-decoration-none">
                             ${item.title}
                         </a>
                     </li>

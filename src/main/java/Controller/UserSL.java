@@ -10,7 +10,7 @@ import java.net.URLEncoder;
 import java.sql.Date;
 
 @WebServlet("/admin/user")
-public class UserServlet extends HttpServlet {
+public class UserSL extends HttpServlet {
     private final UserDAOImpl dao = new UserDAOImpl();
 
     @Override

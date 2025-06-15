@@ -30,7 +30,8 @@
             <input class="form-control" type="file" name="image" />
             <c:if test="${selected.image != null}">
                 <div class="mt-2">
-                    Ảnh hiện tại: <img src="${pageContext.request.contextPath}/images/${selected.image}" width="100" />
+                    Ảnh hiện tại:
+                    <img src="${pageContext.request.contextPath}/metadata/${selected.image}" width="100" />
                 </div>
             </c:if>
         </div>
@@ -88,7 +89,9 @@
                         <c:if test="${c.id eq n.categoryId}">${c.name}</c:if>
                     </c:forEach>
                 </td>
-                <td><img src="${pageContext.request.contextPath}/images/${n.image}" width="80" /></td>
+                <td>
+                    <img src="${pageContext.request.contextPath}/metadata/${n.image}" width="80" />
+                </td>
                 <td>
                     <a href="admin?page=tintuc&id=${n.id}" class="btn btn-sm btn-warning">✏️ Sửa</a>
                 </td>

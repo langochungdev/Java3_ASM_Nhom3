@@ -51,10 +51,9 @@ INSERT INTO CATEGORIES (Id, Name) VALUES
 
 -- Dữ liệu mẫu: USERS
 INSERT INTO USERS (Id, Password, Fullname, Birthday, Gender, Mobile, Email, Role) VALUES
-('USER01', N'pass123', N'Nguyễn Văn A', '1990-01-01', 1, '0912345678', 'nva@gmail.com', 1),
-('USER03', N'pass789', N'Lê Văn C', '1988-03-03', 1, '0934567890', 'lvc@gmail.com', 0),
-('USER05', N'pass112', N'Hoàng Văn E', '1993-05-05', 1, '0956789012', 'hve@gmail.com', 0),
-('USER07', N'pass415', N'Đỗ Văn G', '1989-07-07', 1, '0978901234', 'dvg@gmail.com', 1);
+('hung', N'123', N'La Ngoc Hung', '1990-01-01', 1, '0912345678', 'nva@gmail.com', 1),
+('hai', N'123', N'Hai', '1988-03-03', 1, '0934567890', 'lvc@gmail.com', 0),
+('kha', N'123', N'Kha', '1993-05-05', 1, '0956789012', 'hve@gmail.com', 0)
 
 
 INSERT INTO NEWS (Id, Title, Content, Image, PostedDate, Author, ViewCount, CategoryId, Home) VALUES 
@@ -79,8 +78,8 @@ Chương trình không chỉ nhằm nâng cao chất lượng đào tạo, nghi�
 Tiến sĩ Lê Mai Lan, Chủ tịch Hội đồng Trường VinUni, cho biết: "Không chỉ là trường đại học, VinUni còn hướng đến việc đào tạo thế hệ nhân lực tương lai. Chúng tôi kỳ vọng việc thu hút nhân tài, kết hợp với hệ sinh thái doanh nghiệp, sẽ đóng góp tích cực cho chiến lược phát triển quốc gia".
 
 Sau 5 năm thành lập, VinUni được Tổ chức xếp hạng giáo dục Quacqurelli Symonds của Anh trao chứng nhận 5 QS sao toàn diện- trở thành một trong những trường đại học đạt danh hiệu QS nhanh nhất.', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/09/0ff03d50-4d44-4305-ba0d-1c2c78-3618-4412-1749434299.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=rgJThm3VJoy961762_p9xA', 
- '2025-06-09', 'USER01', 120, 'CAT01', 0),
+ '1.png', 
+ '2025-06-09', 'hung', 120, 'CAT01', 0),
 
 ('news04', N'Phạt nặng để doanh nghiệp không dám trục lợi từ dữ liệu cá nhân', 
  N'Thứ trưởng Công an cho biết nếu quy định xử phạt quá nhẹ, nhiều doanh nghiệp với mức lợi nhuận hàng nghìn tỷ sẵn sàng nộp phạt để kinh doanh dữ liệu cá nhân.
@@ -122,8 +121,8 @@ Tháng 4/2016, bị cáo Minh bán xong 45 căn hộ cho các cá nhân và hộ
 Ngày 24/6/2020, quận Thanh Xuân ra quyết định đình chỉ hoạt động tầng một của tòa nhà. Minh và các hộ dân sinh sống tại đây, theo đó, phải thực hiện các yêu cầu về đảm bảo an toàn PCCC nhưng không thực hiện. Công an quận Thanh Xuân tiếp tục gửi công văn cho họ và cả Công an phường Khương Đình nhưng không có chuyển biến.
 
 Đêm 12/9/2023, mạch điện trên đường dây dẫn tại khu vực bình ắc quy đặt ở giáp tường bị chập, gây cháy. Lửa lan vào khu vực cáp điện, các hộp công tơ điện gắn trên tường tầng một rồi cháy lan ra xung quanh. Hỏa hoạn đã làm 56 người tử vong, 44 người bị thương, thiệt hại 3,2 tỷ đồng về tài sản.', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/04/A-nh-ma-n-hi-nh-2025-06-04-lu-1186-7829-1749027435.png?w=0&h=0&q=100&dpr=2&fit=crop&s=UwSIhVpH6rPbMwbUJFfsPA', 
- '2025-06-05', 'USER01', 210, 'CAT01', 1),
+ '2.png', 
+ '2025-06-05', 'hung', 210, 'CAT01', 1),
 
 ('news10', N'Hồ sơ công chứng đất đai phải được lưu trữ ít nhất 30 năm', 
  N'Từ 1/7, tổ chức hành nghề công chứng phải lưu trữ hồ sơ giao dịch bất động sản trong ít nhất 30 năm và ít nhất 10 năm với các loại giao dịch khác.
@@ -147,8 +146,8 @@ Trường hợp người yêu cầu công chứng đã chết hoặc pháp nhân
 Mọi hồ sơ công chứng giấy phải được dữ liệu hóa
 
 Cũng theo luật mới, từ 1/7 công dân có nhu cầu có thể thực hiện việc công chứng điện tử, trực tuyến.', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/07/b612-20250607-174640-939-17492-7123-8642-1749295706.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=s-rNHKcFViE2EwF2_tvsDw', 
- '2025-06-10', 'USER01', 65, 'CAT01', 0),
+ '3.png', 
+ '2025-06-10', 'hung', 65, 'CAT01', 0),
 
 ('news07', N'Hậu vệ Bồ Đào Nha tự hào "bắt chết" Yamal', 
  N'Hậu vệ trái Nuno Mendes phấn khích khi vô hiệu hóa Lamine Yamal trong trận Bồ Đào Nha thắng Tây Ban Nha ở chung kết Nations League."Đây là một cuộc đối đầu như bao cuộc đối đầu khác mà tôi đã trải qua trong mùa giải", Mendes nói sau trận đấu trên sân Allianz, Munich tối 8/6. "Tôi đã đối mặt nhiều cầu thủ tuyệt vời, rất kỹ thuật và có thể tạo ra sự khác biệt. Hôm nay, tôi khóa chặt Lamine và không cho cậu ấy làm điều cậu ấy giỏi nhất".
@@ -166,8 +165,8 @@ Tại đây, thủ thành Diogo Costa cản cú sút của tiền đạo vào s�
 Mendes cũng dành những lời tri ân cho Ronaldo - tiền đạo 40 tuổi khóc nức nở khi đoạt danh hiệu thứ ba cùng Bồ Đào Nha (hai Nations League, một Euro).
 
 "Chúng tôi rất vui khi Ronaldo đoạt thêm danh hiệu", hậu vệ 22 tuổi cho biết. "Ronaldo giúp chúng tôi trên sân và cả ngoài sân cỏ với rất nhiều lời khuyên cho tất cả cầu thủ, kể cả tôi. Bồ Đào Nha cần Ronaldo trong đội. Anh ấy có thái độ, tinh thần chiến thắng tuyệt vời và là hình mẫu cho toàn đội".', 
- 'https://i1-thethao.vnecdn.net/2025/06/09/nuno-PNG-1749428514-6422-1749428918.png?w=1020&h=0&q=100&dpr=1&fit=crop&s=t5NEdj-jM2ievX_Y-CdHSA', 
- '2025-06-07', 'USER01', 180, 'CAT02', 1),
+ '4.png', 
+ '2025-06-07', 'hung', 180, 'CAT02', 1),
 
 ('news05', N'Indonesia đề nghị FIFA minh bạch ở vòng loại World Cup 2026', 
  N'Indonesia rồi Iraq cùng đề nghị LĐBĐ thế giới (FIFA) và LĐBĐ châu Á (AFC) minh bạch tiêu chí chọn chủ nhà đăng cai vòng loại bốn World Cup 2026 – khu vực châu Á.
@@ -185,8 +184,8 @@ Hôm qua, LĐBĐ Iraq (IFA) cũng gửi đơn lên FIFA và AFC, để xin đăn
 "Chúng tôi đánh giá cao đề xuất của Indonesia về việc làm rõ các tiêu chí chọn chủ nhà", công văn của IFA có đoạn. "Việc công bố các tiêu chí và thời gian phê duyệt góp phần củng cố niềm tin giữa các liên đoàn thành viên, đảm bảo nguyên tắc bình đẳng về cơ hội".Vòng loại bốn World Cup 2026 – khu vực châu Á diễn ra vào tháng 10, với ba lượt trận lần lượt vào ngày 8/10, 11/10 và 14/10. Lễ bốc thăm diễn ra ngày 17/7 nhưng chưa có tiêu chí cụ thể.
 
 Hai đội dẫn đầu mỗi bảng sẽ giành vé trực tiếp dự World Cup 2026. Hai đội nhì sẽ đá play-off theo thể thức sân nhà sân khách vào tháng 11. Đội thắng sẽ tiếp tục vòng play-off liên lục địa với hai đội tuyển Bắc Trung Mỹ, một Nam Mỹ, châu Phi và châu Đại dương.', 
- 'https://i1-thethao.vnecdn.net/2025/06/08/iraq-han-quoc-vong-loai-ba-wor-2259-8793-1749400294.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=5e73dKLJyQjOvoJfcybzjA', 
- '2025-05-05', 'USER01', 75, 'CAT02', 1),
+ '5.png', 
+ '2025-05-05', 'hung', 75, 'CAT02', 1),
 
 ('news02', N'Spalletti từ chức HLV Italy', 
  N'ItalyHai ngày sau trận thua Na Uy 0-3 ở vòng loại World Cup 2026, Luciano Spalletti thông báo sẽ rời vị trí HLV trưởng tuyển Italy.
@@ -200,8 +199,8 @@ Spalletti cho biết điều tiếc nuối nhất trong 2 năm qua là không gi
 Sau đó, Spalletti từ chối trả lời hàng loạt câu hỏi từ các phóng viên rồi đứng dậy bỏ đi sau khi được hỏi liệu ông có cảm thấy "bị phản bội" hay không.
 
 Spalletti từng dẫn dắt nhiều CLB Italy như Empoli, Sampdoria, Udinese, AS Roma hay Inter Milan. Đỉnh cao của ông là cùng Napoli vô địch Serie A 2022-2023. Tuy nhiên, do mâu thuẫn với ban lãnh đạo, ông rời CLB ngay sau chiến tích đó.', 
- 'https://vcdn1-thethao.vnecdn.net/2025/06/08/indonesia-trung-quoc-vong-loai-3592-8379-1749400294.jpg?w=380&h=228&q=100&dpr=1&fit=crop&s=pzHZNhEOK9nQhpozXBJ_cw', 
- '2025-06-08', 'USER01', 98, 'CAT02', 1),
+ '6.png', 
+ '2025-06-08', 'hung', 98, 'CAT02', 1),
 
 ('news03', N'Quốc sách cho quốc bảo', 
  N'Chiếc ngai vàng biểu tượng quyền lực tối cao của 13 đời vua Nguyễn - độc bản linh thiêng còn lại sau 143 năm - bị bẻ gẫy tay còn đầu rồng ném xuống sàn đá. Những hình ảnh khó tin khiến tôi bàng hoàng.
@@ -231,8 +230,8 @@ Phương án 3 - "Hiển bản thật - Chiêm bái vọng": Giữ ngai thật n
 Nhưng trưng bày là vế sau lâu dài. Việc trước mắt là phục chế ngai vàng.
 
 ', 
- 'https://th.bing.com/th?id=OIF.svjtnR2l2OI22DY%2fpm5XPw&rs=1&pid=ImgDetMain', 
- '2025-05-03', 'USER01', 150, 'CAT03', 1),
+ '7.png', 
+ '2025-05-03', 'hung', 150, 'CAT03', 1),
 
 ('news06', N'Lịch công bố điểm thi, điểm chuẩn lớp 10 của 63 tỉnh, thành', 
  N'Gần 50 địa phương dự kiến công bố điểm thi, điểm chuẩn lớp 10 vào giữa tháng 6, riêng Bình Phước đến 15/8.
@@ -246,8 +245,8 @@ Nhiều nơi công bố hai đầu điểm cùng ngày như Bình Dương, Đồ
 Trong năm đầu thí sinh thi theo chương trình mới, các địa phương đều chọn môn thứ ba là Tiếng Anh, trừ Hà Giang chọn môn tích hợp là Lịch sử và Địa lý.
 
 59/63 tỉnh, thành tổ chức thi tuyển. Nhóm xét tuyển là Cà Mau, Gia Lai, Vĩnh Long và Lâm Đồng, áp dụng với hệ đại trà, căn cứ điểm học bạ.', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/07/233a1630-3338-1749114702-17492-3640-8477-1749289312.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=-VQWL1jki6wC-on-t5d0Vw', 
- '2025-05-06', 'USER01', 130, 'CAT03', 1),
+ '8.png', 
+ '2025-05-06', 'hung', 130, 'CAT03', 1),
 
 ('news08', N'Hà Nội lần đầu dùng bản đồ số để học sinh không nhầm điểm thi', 
  N'Các điểm thi tốt nghiệp THPT kèm thông tin địa điểm, liên lạc, được đưa lên bản đồ trực tuyến để học sinh tra cứu, thuận lợi khi đến trường thi.
@@ -265,8 +264,8 @@ Giám đốc Sở Giáo dục và Đào tạo Trần Thế Cương đánh giá k
 Với kỳ thi tốt nghiệp THPT, Hà Nội có hơn 100.000 thí sinh, đông nhất cả nước. Sở đánh giá số lượng thí sinh lớn gây áp lực trong khâu tổ chức, đảm bảo an toàn cho thí sinh và cả kỳ thi. Dùng bản đồ số góp phần giải quyết việc này, cũng như thúc đẩy ứng dụng khoa học công nghệ, đổi mới sáng tạo trong giáo dục.
 
 ', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/08/9b66cd31-79cc-4016-b5d8-3298ad-5614-9148-1749365547.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=xuR8T9sPw1uSsSnK6yvqkg', 
- '2025-06-08', 'USER01', 90, 'CAT03', 0),
+ '9.png', 
+ '2025-06-08', 'hung', 90, 'CAT03', 0),
 
 ('news09', N'1 "chọi" 15 vào lớp 6 trường Năng khiếu mới mở ở Hà Nội', 
  N'Hơn 1.600 học sinh cạnh tranh 105 suất vào lớp 6 trường THCS Năng khiếu Đại học Sư phạm, với tỷ lệ chọi là 1/15,6 trong kỳ tuyển sinh đầu tiên của trường.
@@ -296,12 +295,12 @@ Trường THCS Năng khiếu Đại học Sư phạm được thành lập ngày
 Đề thi vòng này kiểm tra kiến thức văn hóa, nghệ thuật, thể dục thể thao, chủ yếu thuộc chương trình lớp 5. Bài thi trên giấy, với dạng trắc nghiệm kết hợp tự luận, trong 120 phút, điểm tối đa là 100.
 
 Học phí dự kiến của trường THCS Năng khiếu là 4 triệu đồng một tháng.', 
- 'https://i1-vnexpress.vnecdn.net/2025/06/08/thi-sinh9-1749345797-1511-1749346050.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=fgtMzjYzE67xTT0D2Ls7pw', 
- '2025-05-09', 'USER01', 210, 'CAT03', 1);
+ '10.png', 
+ '2025-05-09', 'hai', 210, 'CAT03', 1);
 
 -- Dữ liệu mẫu: NEWSLETTERS
 INSERT INTO NEWSLETTERS (Email, Enabled) VALUES
-('reader1@gmail.com', 1),
-('reader3@gmail.com', 0),
+('langochungdev@gmail.com', 1),
+('langochungse23@gmail.com', 1),
 ('reader5@gmail.com', 1),
 ('reader7@gmail.com', 1);

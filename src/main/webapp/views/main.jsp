@@ -19,9 +19,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"><a class="nav-link" href="main?page=main">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="main?page=vanhoa">Văn hóa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="main?page=phapluat">Pháp luật</a></li>
-                        <li class="nav-item"><a class="nav-link" href="main?page=thethao">Thể thao</a></li>
+                        <c:forEach var="cat" items="${categories}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="main?page=cat&id=${cat.id}">${cat.name}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                     <div class="ms-auto">
                         <c:choose>
@@ -46,59 +48,54 @@
             </main>
 
             <aside class="col-lg-4">
+                <div class="border border-warning bg-warning-subtle rounded p-2 mb-4">
+                    <h6 class="text-primary fw-bold mb-2">🔥 5 tin được xem nhiều</h6>
+                    <c:forEach var="item" items="${topViewed}">
+                        <a href="main?page=tinchitiet&id=${item.id}"
+                           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
+                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                                 class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
+                            <div class="flex-grow-1 small">
+                                <strong>${item.title}</strong><br>
+                                <span class="text-muted small">${item.viewCount} lượt xem</span>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
 
-<!-- 🔥 5 tin được xem nhiều -->
-<div class="border border-warning bg-warning-subtle rounded p-2 mb-4">
-    <h6 class="text-primary fw-bold mb-2">🔥 5 tin được xem nhiều</h6>
-    <c:forEach var="item" items="${topViewed}">
-        <a href="main?page=tinchitiet&id=${item.id}"
-           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-            <img src="${item.image}" alt="ảnh" class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
-            <div class="flex-grow-1 small">
-                <strong>${item.title}</strong><br>
-                <span class="text-muted small">${item.viewCount} lượt xem</span>
-            </div>
-        </a>
-    </c:forEach>
-</div>
+                <div class="border border-success bg-success-subtle rounded p-2 mb-4">
+                    <h6 class="text-success fw-bold mb-2">🆕 5 tin mới nhất</h6>
+                    <c:forEach var="item" items="${latestNews}">
+                        <a href="main?page=tinchitiet&id=${item.id}"
+                           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
+                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                                 class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
+                            <div class="flex-grow-1 small">
+                                <strong>${item.title}</strong><br>
+                                <span class="text-muted small">${item.postedDate}</span>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
 
-<!-- 🆕 5 tin mới nhất -->
-<div class="border border-success bg-success-subtle rounded p-2 mb-4">
-    <h6 class="text-success fw-bold mb-2">🆕 5 tin mới nhất</h6>
-    <c:forEach var="item" items="${latestNews}">
-        <a href="main?page=tinchitiet&id=${item.id}"
-           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-            <img src="${item.image}" alt="ảnh" class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
-            <div class="flex-grow-1 small">
-                <strong>${item.title}</strong><br>
-                <span class="text-muted small">${item.postedDate}</span>
-            </div>
-        </a>
-    </c:forEach>
-</div>
+                <div class="border border-info bg-info-subtle rounded p-2 mb-4">
+                    <h6 class="text-info fw-bold mb-2">👁 5 tin bạn đã xem</h6>
+                    <c:if test="${empty viewedNews}">
+                        <p class="text-muted small fst-italic">Bạn chưa xem bản tin nào.</p>
+                    </c:if>
+                    <c:forEach var="item" items="${viewedNews}">
+                        <a href="main?page=tinchitiet&id=${item.id}"
+                           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
+                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                                 class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
+                            <div class="flex-grow-1 small">
+                                <strong>${item.title}</strong><br>
+                                <span class="text-muted small">${item.postedDate}</span>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
 
-<!-- 👁 5 tin bạn đã xem -->
-<div class="border border-info bg-info-subtle rounded p-2 mb-4">
-    <h6 class="text-info fw-bold mb-2">👁 5 tin bạn đã xem</h6>
-    <c:if test="${empty viewedNews}">
-        <p class="text-muted small fst-italic">Bạn chưa xem bản tin nào.</p>
-    </c:if>
-    <c:forEach var="item" items="${viewedNews}">
-        <a href="main?page=tinchitiet&id=${item.id}"
-           class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-            <img src="${item.image}" alt="ảnh" class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
-            <div class="flex-grow-1 small">
-                <strong>${item.title}</strong><br>
-                <span class="text-muted small">${item.postedDate}</span>
-            </div>
-        </a>
-    </c:forEach>
-</div>
-
-
-
-
-                <!-- Newsletter đăng ký -->
                 <form action="main" method="post" class="input-group mt-4">
                     <input type="email" name="newsletter" placeholder="Nhập email nhận tin" class="form-control" />
                     <button class="btn btn-primary" type="submit">Đăng ký</button>
