@@ -16,5 +16,5 @@ public class User {
     private boolean gender;
     private String mobile;
     private String email;
-    private boolean role; // true = admin, false = phóng viên
+    private boolean role; 
 }

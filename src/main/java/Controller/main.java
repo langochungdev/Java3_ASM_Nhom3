@@ -16,6 +16,9 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/main")
 public class main extends HttpServlet {
+    private DAOchung newsDAO = new NewsDAOImpl();
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String page = request.getParameter("page");
@@ -54,7 +57,7 @@ public class main extends HttpServlet {
             case "tinchitiet":
                 String id = request.getParameter("id");
                 if (id != null) {
-                    News news = new NewsDAOImpl().findById(id);
+                    News news = ((NewsDAOImpl) newsDAO).findById(id);
                     request.setAttribute("news", news);
 
                     if (news != null) {
@@ -71,7 +74,7 @@ public class main extends HttpServlet {
                         }
                         session.setAttribute("viewedNewsIds", viewedIds);
                         if (news.getCategoryId() != null) {
-                            List<News> relatedNews = new NewsDAOImpl().findByCategory(news.getCategoryId());
+                            List<News> relatedNews = ((NewsDAOImpl) newsDAO).findByCategory(news.getCategoryId());
                             request.setAttribute("relatedNews", relatedNews);
                         }
                     }
@@ -86,7 +89,7 @@ public class main extends HttpServlet {
 
                 if (viewedIds != null) {
                     for (String vid : viewedIds) {
-                        News n = new NewsDAOImpl().findById(vid);
+                        News n = ((NewsDAOImpl) newsDAO).findById(vid);
                         if (n != null) {
                             viewedNews.add(n);
                         }
@@ -98,7 +101,7 @@ public class main extends HttpServlet {
                 break;
 
             default:
-                List<News> list = new NewsDAOImpl().findHomeNews();
+                List<News> list = ((NewsDAOImpl) newsDAO).findHomeNews();
                 request.setAttribute("newsList", list);
                 //hai
                 request.setAttribute("topViewed", ((NewsDAOImpl) newsDAO).findTopViewed(5));
@@ -111,6 +114,7 @@ public class main extends HttpServlet {
         request.getRequestDispatcher("/views/main.jsp").forward(request, response);
     }
 //hung end
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //hung 
