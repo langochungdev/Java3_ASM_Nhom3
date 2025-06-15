@@ -27,6 +27,8 @@ public class admin extends HttpServlet {
                 return;
             }
         }
+        
+        
         switch (page != null ? page : "") {
             case "tintuc":
                 includePage = "/views/admin/tintuc.jsp";
