@@ -18,4 +18,15 @@ public class News {
     private int viewCount;
     private String categoryId;
     private boolean home;
+    
+    public News(String id, String title, String content, String image, Date postedDate, String categoryId, boolean home) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.postedDate = postedDate;
+        this.categoryId = categoryId;
+        this.home = home;
+    }
+
 }

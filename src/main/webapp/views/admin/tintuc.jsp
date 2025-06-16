@@ -27,13 +27,28 @@
 
         <div class="col-md-6">
             <label class="form-label">Hình ảnh:</label>
-            <input class="form-control" type="file" name="image" />
-            <c:if test="${selected.image != null}">
-                <div class="mt-2">
-                    Ảnh hiện tại:
-                    <img src="${pageContext.request.contextPath}/metadata/${selected.image}" width="100" />
-                </div>
-            </c:if>
+<!--             <input class="form-control" type="file" name="image" /> -->
+<%--             <c:if test="${selected.image != null}"> --%>
+<!--                 <div class="mt-2"> -->
+<!--                     Ảnh hiện tại: -->
+<%--                     <img src="${pageContext.request.contextPath}/images/${selected.image}" width="100" /> --%>
+<!--                 </div> -->
+<%--             </c:if> --%>
+
+<input class="form-control" type="file" name="image" id="imageInput" onchange="previewImage(event)" />
+
+<c:if test="${selected.image != null}">
+    <div class="mt-2">
+        Ảnh hiện tại:
+        <img src="${pageContext.request.contextPath}/images/${selected.image}" width="100" id="currentImage" />
+    </div>
+</c:if>
+
+<!-- Khu vực hiển thị ảnh mới được chọn -->
+<div id="previewContainer" class="mt-2" style="display: none;">
+    Ảnh mới chọn:
+    <img id="preview" src="#" alt="Preview" width="100" />
+</div>
         </div>
 
         <div class="col-md-6">
@@ -90,7 +105,7 @@
                     </c:forEach>
                 </td>
                 <td>
-                    <img src="${pageContext.request.contextPath}/metadata/${n.image}" width="80" />
+                    <img src="${pageContext.request.contextPath}/images/${n.image}" width="80" />
                 </td>
                 <td>
                     <a href="admin?page=tintuc&id=${n.id}" class="btn btn-sm btn-warning">✏️ Sửa</a>
@@ -100,3 +115,26 @@
         </tbody>
     </table>
 </div>
+
+
+<script>
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const previewContainer = document.getElementById('previewContainer');
+        const preview = document.getElementById('preview');
+
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                previewContainer.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '#';
+            previewContainer.style.display = 'none';
+        }
+    }
+</script>

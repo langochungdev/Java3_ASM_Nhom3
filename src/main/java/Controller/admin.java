@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import DAO.CategoryDAO;
 import DAO.NewsDAOImpl;
 import DAO.NewsletterDAOImpl;
@@ -30,28 +29,37 @@ public class admin extends HttpServlet {
 
         switch (page != null ? page : "") {
 
-            case "tintuc":
-                String authorId = user != null ? user.getId() : null;
-                NewsDAOImpl newsDAO = new NewsDAOImpl();
+        case "tintuc":
+            String authorId = user != null ? user.getId() : null;
+            NewsDAOImpl newsDAO = new NewsDAOImpl();
 
-                String selectedId = request.getParameter("id");
-                if (selectedId != null && !selectedId.trim().isEmpty()) {
-                    News selected = newsDAO.findById(selectedId);
-                    if (selected != null) {
-                        request.setAttribute("selectedNews", selected);
-                    }
+            String selectedId = request.getParameter("id");
+            if (selectedId != null && !selectedId.trim().isEmpty()) {
+                News selected = newsDAO.findById(selectedId);
+                if (selected != null) {
+                    request.setAttribute("selectedNews", selected);
                 }
+            }
 
-                request.setAttribute("items", newsDAO.findByAuthor(authorId));
-                request.setAttribute("categories", new CategoryDAO().findAll());
+            
+            List<News> newsL;
+            if (user != null && user.isRole()) { 
+            	newsL = newsDAO.findAll();
+            } else {
+            	newsL = newsDAO.findByAuthor(authorId);
+            }
 
-                String success = request.getParameter("success");
-                if (success != null) {
-                    request.setAttribute("success", success);
-                }
+            request.setAttribute("items", newsL);
+            request.setAttribute("categories", new CategoryDAO().findAll());
 
-                includePage = "/views/admin/tintuc.jsp";
-                break;
+            String success = request.getParameter("success");
+            if (success != null) {
+                request.setAttribute("success", success);
+            }
+
+            includePage = "/views/admin/tintuc.jsp";
+            break;
+
 
             case "loaitin":
                 List<Category> categoryList = new CategoryDAO().findAll();

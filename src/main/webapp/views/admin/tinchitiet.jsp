@@ -21,7 +21,7 @@
     <div class="d-flex gap-3 mb-4">
         <!-- Ảnh đại diện -->
         <div class="flex-shrink-0">
-            <img src="${pageContext.request.contextPath}/metadata/${news.image}" alt="ảnh"
+            <img src="${pageContext.request.contextPath}/images/${news.image}" alt="ảnh"
                  class="img-fluid rounded"
                  style="width: 150px; height: 150px; object-fit: cover;">
         </div>

@@ -10,7 +10,7 @@
             <div
                 class="flex-shrink-0 bg-primary text-white d-flex justify-content-center align-items-center rounded"
                 style="width: 120px; height: 90px;">
-                <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh" class="img-fluid rounded h-100"
+                <img src="${pageContext.request.contextPath}/images/${item.image}" alt="ảnh" class="img-fluid rounded h-100"
                     style="max-height: 200px;">
             </div>
             <div class="ms-3">

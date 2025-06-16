@@ -56,14 +56,12 @@ public class NewsDAOImpl implements DAOchung<News, String> {
     @Override
     public void update(News news) {
         if (news == null) return;
-        String sql = "UPDATE NEWS SET Title = ?, Content = ?, Image = ?, PostedDate = ?, Author = ?, ViewCount = ?, CategoryId = ?, Home = ? WHERE Id = ?";
+        String sql = "UPDATE NEWS SET Title = ?, Content = ?, Image = ?, PostedDate = ?, CategoryId = ?, Home = ? WHERE Id = ?";
         Jdbc.execUpdate(sql,
                 news.getTitle(),
                 news.getContent(),
                 news.getImage(),
                 news.getPostedDate(),
-                news.getAuthor(),
-                news.getViewCount(),
                 news.getCategoryId(),
                 news.isHome(),
                 news.getId()

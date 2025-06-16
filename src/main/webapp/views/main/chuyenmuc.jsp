@@ -11,7 +11,7 @@
            style="max-width: 600px; width: 100%;">
             <div class="flex-shrink-0 bg-light rounded overflow-hidden"
                  style="width: 120px; height: 90px;">
-                <img src="${pageContext.request.contextPath}/metadata/${item.image}"
+                <img src="${pageContext.request.contextPath}/images/${item.image}"
                      alt="ảnh" class="img-fluid h-100 w-100" style="object-fit: cover;">
             </div>
             <div class="ms-3">

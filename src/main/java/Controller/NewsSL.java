@@ -49,15 +49,16 @@ public class NewsSL extends HttpServlet {
             Part filePart = req.getPart("image");
             if (filePart != null && filePart.getSize() > 0) {
                 imageName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-                String uploadPath = req.getServletContext().getRealPath("/metadata");
+                String uploadPath = req.getServletContext().getRealPath("/images");
                 new File(uploadPath).mkdirs();
                 filePart.write(uploadPath + File.separator + imageName);
+                System.out.println(uploadPath);
             }
         } catch (Exception ignored) {
         }
 
         try {
-            // Lấy ảnh cũ nếu không upload ảnh mới
+           
             if ((imageName == null || imageName.isEmpty()) && id != null) {
                 News old = dao.findById(id);
                 if (old != null) {
@@ -72,9 +73,9 @@ public class NewsSL extends HttpServlet {
                     News news = new News(newId, title, content, imageName, postedDate, currentUser.getId(), 0, categoryId, home);
                     dao.create(news);
 
-                    // ✅ Gửi mail cho tất cả người đăng ký
+                    
                     List<Newsletter> subs = newsletterDAO.findAll();
-                    String imagePath = req.getServletContext().getRealPath("/metadata/" + imageName);
+                    String imagePath = req.getServletContext().getRealPath("/images/" + imageName);
 
                     for (Newsletter sub : subs) {
                         if (sub.isEnabled()) {
@@ -93,7 +94,7 @@ public class NewsSL extends HttpServlet {
 
                 case "update": {
                     Date postedDate = new SimpleDateFormat("yyyy-MM-dd").parse(postedDateStr);
-                    News updated = new News(id, title, content, imageName, postedDate, currentUser.getId(), 0, categoryId, home);
+                    News updated = new News(id, title, content, imageName, postedDate, categoryId, home);
                     dao.update(updated);
                     break;
                 }

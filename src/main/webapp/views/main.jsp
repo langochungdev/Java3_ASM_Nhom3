@@ -53,7 +53,7 @@
                     <c:forEach var="item" items="${topViewed}">
                         <a href="main?page=tinchitiet&id=${item.id}"
                            class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                            <img src="${pageContext.request.contextPath}/images/${item.image}" alt="ảnh"
                                  class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
                             <div class="flex-grow-1 small">
                                 <strong>${item.title}</strong><br>
@@ -68,7 +68,7 @@
                     <c:forEach var="item" items="${latestNews}">
                         <a href="main?page=tinchitiet&id=${item.id}"
                            class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                            <img src="${pageContext.request.contextPath}/images/${item.image}" alt="ảnh"
                                  class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
                             <div class="flex-grow-1 small">
                                 <strong>${item.title}</strong><br>
@@ -86,7 +86,7 @@
                     <c:forEach var="item" items="${viewedNews}">
                         <a href="main?page=tinchitiet&id=${item.id}"
                            class="d-flex text-decoration-none text-dark border rounded p-2 mb-2 align-items-start bg-white">
-                            <img src="${pageContext.request.contextPath}/metadata/${item.image}" alt="ảnh"
+                            <img src="${pageContext.request.contextPath}/images/${item.image}" alt="ảnh"
                                  class="me-2 rounded" style="width: 80px; height: 60px; object-fit: cover;">
                             <div class="flex-grow-1 small">
                                 <strong>${item.title}</strong><br>
